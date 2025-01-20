@@ -1,0 +1,28 @@
+.title{
+    font-family: TiltNeon;
+    font-size: 100px;
+    text-shadow: -7px 2x 0 dimgray;
+    color : gray;
+    height: 100px;
+    text-align: center;
+    font-style: normal;
+}
+ 
+body{
+    font-family: RobotoCondensd;
+    color: dimgray;
+    background: rgb(212, 244, 225);
+}
+
+div{
+    text-align: left;
+    font-family: RobotoCondensed;
+    font-size: 25px;
+    font-style: normal;
+margin: 10px;
+}
+
+#patriotmilitia{
+    font-family: RobotoCondensed;
+    font-style: italic;
+}
