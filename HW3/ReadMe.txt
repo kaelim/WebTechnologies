@@ -1,0 +1,2 @@
+Honestly the AI version did not follow the requirements set out by the assignment. It made a title and one small intro statement but was overall pretty empty. It did make one set of labeled buttons but they did not affect the DOM or call any funtions which was funny.
+I really liked this assignment, it was challenging but doable. The only thing I wish I could have figured out was how make the buttons appear once the ones befor it had been chosen.

@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Choose Your Adventure">
+    <meta name="Kaeli Moore">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Adventure</title>
+    <script>
+        function Welcome() {
+            window.alert("Welcome to your adventure!");
+        }
+    </script>
+
+
+</head>
+<body>
+    <div class="title">
+        Choose Your Adventure
+    </div>
+
+    <img id="pixel" src="./images/scene.jpg"/>
+
+    <script>
+        Welcome()
+    </script>
+
+
+
+
+
+    <p>
+        Hello brave adventurer are you ready to set off ? Your fate is in your hands, all of the choices you make will affect the
+        outcome of your story. Are you ready?
+    </p>
+    <button id="ready1" onclick="Ready()">I'm Ready</button>
+    <button onclick="notReady()">Not Ready</button>
+    <p id="demo"></p>
+    <p id="start"></p>
+
+
+    <script>
+
+
+        function Ready() {
+            document.getElementById("demo").innerHTML = "Let's Go!";
+            document.getElementById("start").innerHTML = " You set off with your sword strapped across your back and a couple days worth of rations in you saddle bag.You are off to slay a mighty beast and may run into trouble along your way.You come to a fork in the path.Will you go left and save some time despite the more difficult trail or go right with the easier path ? ";
+        }
+
+
+        function notReady() {
+            document.getElementById("demo").innerHTML = "Welp, we can just sit here then...";
+            document.getElementById("start").innerHTML = "";
+        }
+    </script>
+
+    <button onclick="Left()">Left</button>
+    <button onclick="Right()">Right</button>
+
+    <p id="trail"></p>
+    <p id="morning"></p>
+
+    <script>
+        function Left() {
+            document.getElementById("trail").innerHTML = "You take the trail left and the train is steep and rocky. It is fine for some time but you push your horse to far and she twists her ankle. You must return home and care for her.";
+            document.getElementById("morning").innerHTML = "";
+        }
+        function Right() {
+            document.getElementById("trail").innerHTML = "The path is calm and you enjoy the sounds of the forest while you walk. You set up camp for the night near the entrance to the beasts layer. You can't fight without good rest.";
+            document.getElementById("morning").innerHTML = "You enter the beasts layer at first light so that you may catch it unaware. Unfortunaterly for you the beast is a giant rooster and it's about to annouce that mornign has come. It's cry is so loud you will go insane if you hear it. What will you do? Will you plug your ears and hope for ther best or will you hope to defeat it before it cries?"
+        }
+    </script>
+
+    <button onclick="Plug()">Cover Your Ears</button>
+
+    <button onclick="Defeat()">Fight</button>
+
+    <p id="outcome"></p>
+    <p id="win"></p>
+    <p id="2"></p>
+    <script>
+        var winner = 0;
+        function Plug() {
+            document.getElementById("outcome").innerHTML = "You cover your ears as the rooster crows; it's sound rattles your very being until it passes. Once the rooster has finished you rush in and defeat the beast with only minor hearing loss. You are able to return home safely.";
+            document.getElementById("win").innerHTML = "You Win!";
+            winner += 1;
+
+        }
+
+        function Defeat() {
+            document.getElementById("outcome").innerHTML = " You run toward the rooster as it begins it's cry. You are too late, when the piercing cry reaches your ears you fall into insanity.";
+            document.getElementById("win").innerHTML = "You Loose!";
+        }
+        function yay() {
+            if (winner == 1) {
+                console.log(2 + 2);
+            } else {
+                console.log(2 - 2);
+            }
+        }
+
+    </script>
+    <button onclick="yay()">Look at Console</button>
+
+</body>
+
+</html>
