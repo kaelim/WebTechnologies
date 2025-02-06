@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Choose Your Adventure">
+    <meta name="Kaeli Moore">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Adventure</title>
+   
+  
+
+</head>
+<body>
+
+    <script>
+        function whileAudio(story) {
+            while (story) {
+                document.getElementById("myAudio").loop = true;
+                console.log("sounds");
+                if (story = false) {
+                    document.getElementById("myAudio").loop = false;
+                }
+            }
+        }
+    </script>
+
+
+    <div class="title">
+        Choose Your Adventure
+    </div>
+
+    <audio id="myAudio" controls autoplay>
+        <source src="./audio/background.mp3" type="audio/mpeg">
+
+        Your browser does not support the audio element.
+    </audio>
+
+    <img id="pixel" src="./images/scene.jpg" />
+
+
+    <p>
+        Hello brave adventurer are you ready to set off ? Your fate is in your hands, all of the choices you make will affect the
+        outcome of your story. Are you ready?
+    </p>
+
+
+    <script>
+        whileAudio(true);
+
+        function getReady() {
+            if (document.getElementById("txtReady").value.trim().toLowerCase() === "yes") {
+                document.getElementById("demo").innerHTML =
+                    "Let's Go! You set off with your sword strapped across your back and a couple days' worth of rations in your saddlebag. You are off to slay a mighty beast and may run into trouble along your way. You come to a fork in the path. Will you go left and save some time despite the more difficult trail, or go right with the easier path?";
+            } else {
+                document.getElementById("demo").innerHTML = "Welp, we can just sit here then...";
+            }
+
+        }
+
+    </script>
+
+    <input id="txtReady" type="text"><br>
+    <button id="start" onclick="getReady();">enter</button><br>
+
+    <img id="trailimg" src="./images/trail.jpg" />
+
+
+    <div>
+        <p id="demo"></p>
+    </div>
+
+    <script>
+
+        function LeftRight() {
+            if (document.getElementById("txtDirection").value.trim().toLowerCase() === "left") {
+                document.getElementById("trail").innerHTML =
+                    "You take the trail left and the train is steep and rocky. It is fine for some time but you push your horse to far and she twists her ankle. You must return home and care for her.";
+            } else if (document.getElementById("txtDirection").value.trim().toLowerCase() === "right") {
+                document.getElementById("trail").innerHTML = "The path is calm and you enjoy the sounds of the forest while you walk. You set up camp for the night near the entrance to the beasts layer. You can't fight without good rest and food; yo have some cheese and bread or you could light a fire to make stew.";
+            }
+            else {
+                document.getElementById("trail").innerHTML = 'Please enter "left" or "right"';
+            }
+        }
+
+    </script>
+
+
+
+    <input id="txtDirection" type="text"><br>
+    <button id="Direction" onclick="LeftRight();">enter</button><br>
+
+    <img id="campimg" src="./images/camp.avif" />
+
+    <div>
+        <p id="trail"></p>
+    </div>
+
+
+    <b></b>
+    <script>
+
+        function Camp() {
+            if (document.getElementById("txtCamp").value.trim().toLowerCase() === "cheese and bread") {
+                document.getElementById("camp").innerHTML =
+                    "You rumage in your bag and find stale bread and cheese. You eat it slowly taking in the night around you. You wake up the next morning at first light and make your way into the beasts layer, it is sleeping which gives you an advantage. It begins to stir, you are running out of time, will you attack the rooster and hope you can kill it before it piercing cry reaches you or will you cover your ears?";
+            } else if (document.getElementById("txtCamp").value.trim().toLowerCase() === "stew") {
+                document.getElementById("camp").innerHTML = "You prep some mushrooms you found along the way and prep a rabbit you managed to get. You here something rustling in the bushes, possibly attracted by the scent.";
+            }
+            else {
+                document.getElementById("camp").innerHTML = 'Please enter "cheese and bread" or "stew"';
+            }
+        }
+
+    </script>
+
+    <input id="txtCamp" type="text"><br>
+    <button id="Camp" onclick="Camp();">enter</button><br>
+
+    <img id="caveimg" src="./images/cave.avif" />
+
+    <div>
+        <p id="camp"></p>
+    </div>
+
+    <script>
+
+        function Battle() {
+            if (document.getElementById("txtBattle").value.trim().toLowerCase() === "fight") {
+                document.getElementById("outcome").innerHTML =
+                    "You run toward the rooster as it begins it's cry. You are too late, when the piercing cry reaches your ears you fall into insanity.";
+            } else if (document.getElementById("txtBattle").value.trim().toLowerCase() === "cover your ears") {
+                document.getElementById("outcome").innerHTML = "You cover your ears as the rooster crows; it's sound rattles your very being until it passes. Once the rooster has finished you rush in and defeat the beast with only minor hearing loss. You are able to return home safely. Will you sell the spoils of your conquest or share them?";
+            }
+            else {
+                document.getElementById("outcome").innerHTML = 'Please enter "fight" or "cover your ears"';
+            }
+        }
+
+    </script>
+
+    <input id="txtBattle" type="text"><br>
+    <button id="Battle" onclick="Battle();">enter</button><br>
+
+    <img id="villageimg" src="./images/village.png" />
+
+    <p id="outcome"></p>
+
+    <script>
+        var finish = "in progress";
+        function Home() {
+            if (document.getElementById("txtHome").value.trim().toLowerCase() === "sell") {
+                document.getElementById("home").innerHTML =
+                    "You sell the materials you gathered from the rooster and you live the rest of you days as a rich warrior.";
+                whileAudio(false);
+                return finish = true;
+            } else if (document.getElementById("txtHome").value.trim().toLowerCase() === "share") {
+                document.getElementById("home").innerHTML = "You share the materials witht he other villagers and they are forever grateful. You make many great beneficial relationships and carry out a fulfilling life.";
+                whileAudio(false);
+            }
+            else {
+                document.getElementById("home").innerHTML = 'Please enter "share" or "sell"';
+            }
+        }
+    </script>
+
+    <input id="txtHome" type="text"><br>
+    <button id="home" onclick="Home();">enter</button><br>
+
+    <p id="outcome"></p>
+    <script>
+        document.write(finish)
+    </script>
+    <div>
+    <button id="restart" onclick="location.reload()">restart</button><br>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+
+
+.title {
+	font-family: TiltNeon;
+	font-size: 100px;
+	text-shadow: -7px 2x 0 dimgray;
+	color: darkgrey;
+	height: 100px;
+	text-align: center;
+	font-style: normal;
+}
+
+body {
+	font-family: RobotoCondensd;
+	color: darkgrey;
+	background-color: darkslategray;
+	text-align: center;
+	font-size:25px;
+	margin 15px;
+}
+
+div {
+	text-align: left;
+	font-family: RobotoCondensed;
+	font-size: 25px;
+	font-style: normal;
+	margin: 10px;
+}
+input[type=text] {
+	border: 2px solid darkgrey;
+	backgorund-color: lightgray;
+	background pink;
+}
+
+button {
+	background-color: lightgray;
+	color: darkslategray;
+	border: darkgray;
+	align-center;
+}
+
+button:hover {
+	background-color: slategray;
+	color: darkgrey;
+	border: darkgrey;
+}
+
+img {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 5px;
+	width: 80%;
+}
+
+audio-player{
+	color: darkgray;
+}
