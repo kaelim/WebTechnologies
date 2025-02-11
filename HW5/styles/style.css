@@ -1,0 +1,25 @@
+
+
+.title {
+	font-family: TiltNeon;
+	font-size: 100px;
+	text-shadow: -7px 2x 0 dimgray;
+	color: darkgrey;
+	height: 100px;
+	text-align: center;
+	font-style: normal;
+}
+
+body {
+	font-family: RobotoCondensd;
+	color: darkgrey;
+	background-color: darkslategray;
+	text-align: center;
+	font-size:25px;
+	margin: 15px;
+}
+
+.table {
+	padding: 15px;
+	text-align: center;
+}

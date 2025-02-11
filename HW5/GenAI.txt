@@ -1,0 +1,2 @@
+This week was pretty fun, I used AI to help with shifting the .length from 4 to 12 as I had to alter the count method. 
+I also had to use a different table format which I couldn't figure out how to center but other that that I feel like this was really succeful.
