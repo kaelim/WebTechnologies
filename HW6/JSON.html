@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <script src="scripts/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <meta charset="utf-8" />
+    <title>JSON</title>
+    <script>
+        function displayPlayerName() {
+            // Retrieve the player information from localStorage
+            var playerInformation = localStorage.getItem("playerInfo");
+
+            if (playerInformation) {
+                // Parse the player object from JSON string
+                var player = JSON.parse(playerInformation);
+
+                // Set the player's first name in the HTML element
+                document.getElementById("playerName").innerText = player.firstname;
+                document.getElementById("playerName1").innerText = player.lastname;
+                document.getElementById("playerAge").innerText = player.age;
+
+                document.getElementById("attemptCounter").innerText = player.attemptCounts;
+
+            } else {
+                // If no player information is found, show a default message
+                document.getElementById("playerName").innerText = "Guest";
+
+                console.log(player.attemptCounts);
+            }
+        }
+
+        window.onload = displayPlayerName;
+
+    </script>
+</head>
+<body>
+    <div id="info"></div>
+    <br>
+
+    <div>
+        <h1>You win, <span id="playerName"></span> <span id="playerName1"</span>!</h1>
+        <h1> <spam id="playerAge"></spam></h1>
+        <h1> <span id="attemptCounter"></span></h1>
+    </div>
+</body>
+</html>
