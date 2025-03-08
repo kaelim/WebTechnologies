@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Random Movement: Text, Images & Shapes</title>
+    <script src="./libs/jquery.min.js"></script>
+
+    <script>
+        $(function () {
+            const texts = ["Circle", "Square", "Triangle"];
+            const images = ["/images/circle.png", "/images/square.png", "/images/triangle.png"];
+            const shapes = ["circle", "square", "triangle"];
+            let textIndex = 0;
+            let imageIndex = 0;
+            let shapeIndex = 0;
+
+            function getRandomPosition() {
+                const maxX = 400; // Max movement range
+                const maxY = 300;
+                return {
+                    left: Math.floor(Math.random() * maxX) + "px",
+                    top: Math.floor(Math.random() * maxY) + "px"
+                };
+            }
+
+            function animateText() {
+                const newPos = getRandomPosition();
+                $(".moving-text")
+                    .animate({ left: newPos.left, top: newPos.top }, "slow", function () {
+                        $(this).fadeOut(1000, function () {
+                            textIndex = (textIndex + 1) % texts.length;
+                            $(this).text(texts[textIndex]);
+                            $(this).fadeIn(1000, animateText);
+                        });
+                    });
+            }
+
+            function animateImage() {
+                const newPos = getRandomPosition();
+                $(".moving-image")
+                    .animate({ left: newPos.left, top: newPos.top }, "slow", function () {
+                        $(this).fadeOut(1000, function () {
+                            imageIndex = (imageIndex + 1) % images.length;
+                            $(this).attr("src", images[imageIndex]);
+                            $(this).fadeIn(1000, animateImage);
+                        });
+                    });
+            }
+
+            function animateShape() {
+                const newPos = getRandomPosition();
+                $(".moving-shape")
+                    .animate({ left: newPos.left, top: newPos.top }, "slow", function () {
+                        $(this).fadeOut(1000, function () {
+                            shapeIndex = (shapeIndex + 1) % shapes.length;
+                            updateShape($(this), shapes[shapeIndex]);
+                            $(this).fadeIn(1000, animateShape);
+                        });
+                    });
+            }
+
+            function updateShape(element, shape) {
+                element.removeClass("circle square triangle").addClass(shape);
+            }
+
+            $("#start").on("click", function () {
+                $(".moving-text").css({ left: "200px", top: "300px" });
+                $(".moving-image").css({ left: "400px", top: "100px" });
+                $(".moving-shape").css({ left: "300px", top: "200px" });
+
+                animateText();
+                animateImage();
+                animateShape();
+            });
+        });
+    </script>
+
+    <style>
+        .moving-text {
+            position: absolute;
+            left: 200px;
+            top: 300px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .moving-image {
+            position: absolute;
+            left: 400px;
+            top: 100px;
+            width: 150px;
+            height: 100px;
+        }
+
+        .moving-shape {
+            position: absolute;
+            left: 300px;
+            top: 200px;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        .circle {
+            border-radius: 50%;
+            background-color: blue;
+        }
+
+        .square {
+            border-radius: 0;
+            background-color: green;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid orange;
+            background-color: transparent;
+        }
+    </style>
+
+</head>
+<body>
+    <p><button id="start">Start</button></p>
+    <div class="moving-text">Circle</div>
+    <img class="moving-image" src="/images/circle.png" />
+    <div class="moving-shape square"></div>
+</body>
+</html>
