@@ -1,0 +1,6 @@
+{
+  "name": "Bulbasaur",
+  "image": "http://www.serebii.net/pokemongo/pokemon/001.png",
+  "type": { "first": "grass", "second": "poison" },
+  "weakness": ["fire", "ice", "flying", "psychic"]
+}
