@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Canvas</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: lightblue;
+        }
+
+        canvas {
+            border: 5px solid black;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="500" height="500"></canvas>
+    <audio id="bgMusic" loop>
+        <source src="./sound/background.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+
+    <button onclick="document.getElementById('bgMusic').play()">Start Music</button>
+
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+
+        class MovingObject {
+            constructor(x, y, size, color, speed) {
+                this.x = x;
+                this.y = y;
+                this.size = size;
+                this.color = color;
+                this.speed = speed;
+                this.dx = speed;
+                this.dy = speed;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            moveAuto() {
+                this.x += this.dx;
+                this.y += this.dy;
+
+                if (this.x - this.size < 0 || this.x + this.size > canvas.width) {
+                    this.dx *= -1;
+                }
+                if (this.y - this.size < 0 || this.y + this.size > canvas.height) {
+                    this.dy *= -1;
+                }
+            }
+        }
+
+        class Player extends MovingObject {
+            constructor(x, y, size, color, speed) {
+                super(x, y, size, color, speed);
+            }
+
+            move(event) {
+                const step = this.speed;
+                if (event.key === "ArrowUp" && this.y - this.size > 0) this.y -= step;
+                if (event.key === "ArrowDown" && this.y + this.size < canvas.height) this.y += step;
+                if (event.key === "ArrowLeft" && this.x - this.size > 0) this.x -= step;
+                if (event.key === "ArrowRight" && this.x + this.size < canvas.width) this.x += step;
+            }
+        }
+
+        const player = new Player(100, 100, 20, "blue", 10);
+        const autoMover = new MovingObject(200, 200, 20, "red", 2);
+        let collisionHappened = false;
+
+        function detectCollision() {
+            const dx = player.x - autoMover.x;
+            const dy = player.y - autoMover.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < player.size + autoMover.size) {
+                document.body.style.backgroundColor = "orange";
+                if (!collisionHappened) {
+                    player.size *= 1.5;
+                    autoMover.size *= 1.5;
+                    collisionHappened = true;
+                }
+            } else {
+                document.body.style.backgroundColor = "lightblue";
+                collisionHappened = false;
+            }
+        }
+
+        function update() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            player.draw();
+            autoMover.draw();
+            autoMover.moveAuto();
+            detectCollision();
+            requestAnimationFrame(update);
+        }
+
+        document.addEventListener("keydown", (event) => player.move(event));
+        document.addEventListener("click", () => {
+            document.getElementById("bgMusic").play();
+        });
+        update();
+    </script>
+</body>
+</html>
